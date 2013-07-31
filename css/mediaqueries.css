@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+
+@media only screen and (min-width:1486px){ /* 6 or more*/
+	.wrap{width:1455px}
+}
+@media only screen and (max-width:1485px){ /* 5 */
+	.wrap{width:1210px}
+}
+@media only screen and (max-width:1240px){ /* 4 */
+	.wrap{width:965px}
+}
+@media only screen and (max-width:995px){ /* 3 */
+	.wrap{width:720px}
+	
+	/* Blog list ******************************************************************/
+	.column.left,.column.right{
+		float:none;width:100%;
+	}
+	.column.right{
+		position:fixed;
+		right:10px;
+	}
+	.column.right .box{
+		margin:15px;
+	}
+	
+	
+	
+}
+@media only screen and (max-width:750px){ /* 2 */
+	.wrap{width:475px}
+}
+@media only screen and (max-width:505px){ /* 1 */
+	.wrap{width:230px}
+}
+
+
