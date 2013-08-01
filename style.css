@@ -14,11 +14,9 @@ body{
 	background:#F5F5F6;
 }
 body, input, textarea {
-	font: 22px/1.6em 'Open Sans', Arial, Helvetica, sans-serif;
-	/*font: 22px/1.6em 'Merriweather',Georgia,serif;color:#666;*/
+	font: 18px/1.5em 'Open Sans', Arial, Helvetica, sans-serif;5
 }
-h1,h2,h3,h4,h5,h6{
-	
+h1,h2,h3,h4,h5,h6{	
 	letter-spacing: -0.04em;
 	color:#999;
 }
@@ -29,9 +27,9 @@ h1{
     margin-bottom:30px;
 }
  
-h2{
-	font-size: 32px;
-    line-height: 44px;
+h2,.post h1{
+	font-size: 36px;
+    line-height: 48px;
     margin-bottom: 10px;
 }
 
@@ -40,8 +38,14 @@ h3 {
     line-height: 36px;
     margin-bottom: 10px;
 }
+h5{	
+	font-size:14px;font-weight: bold;
+}
+h6{	
+	font-size:12px;
+}
 p{
-	margin-bottom: 32px;
+	margin-bottom: 25px;
 }
 a{
 	color:#3f90c4;
@@ -338,9 +342,35 @@ body.show-item-portfolio #item-portfolio{
 
 
 /* BLOG ******************************************************************/
-.post{
-	padding:40px;	
+article#blog-post.main {
+    padding-top: 40px;
 }
+.post{
+	padding:40px;margin-bottom:30px;
+}
+.post header{
+	padding-bottom:10px;margin-bottom:20px;
+	border-bottom:dotted 1px #CCC;
+}
+.category{
+	color:#888;font-size:13px;padding-left:3px;
+}
+
+.post .size-medium,
+.post .size-large,
+.post .wp-caption{
+	width:100% !important;height:auto !important;max-width:970px !important;display:block;
+}
+.post .wp-caption{
+	margin-bottom:25px;
+}
+.post .wp-caption p{
+	margin-bottom:0;font-size: 12px;text-align: center;color:#777;
+}
+
+
+
+
 /* Blog list ******************************************************************/
 .column{
 	float:left;position:relative
@@ -357,7 +387,6 @@ body.show-item-portfolio #item-portfolio{
 }
 
 #blog .post{
-	min-height:700px;
 }
 
 #sidebar-launcher{

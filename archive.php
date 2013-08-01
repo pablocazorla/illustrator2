@@ -1,20 +1,24 @@
 <?php get_header(); ?>
+<?php $cat_name = single_cat_title('',false);?>
 <article id="blog" class="main">
 	<div class="wrap clearfix">
-		<h1>Blog</h1>		
+		<h1><?php echo $cat_name; ?></h1>		
 		<div class="column left">			
 			<?php if (have_posts()) :?>
 			<?php while (have_posts()) : the_post(); ?>
 			<section class="post box" id="post-<?php the_ID();?>">
-				<h2>
-				<a href="<?php the_permalink(); ?>">					
-				<?php the_title(); ?>
-				</a>
-				</h2>
-				<a href="<?php the_permalink(); ?>">
-					<?php if(has_post_thumbnail()): the_post_thumbnail('thumbnail'); endif; ?>
-				</a>					
-				<?php the_content(); ?>		
+				<header>
+					<h2>
+						<a href="<?php the_permalink(); ?>">					
+							<?php the_title(); ?>
+						</a>
+					</h2>
+					<div class="category">
+						Category: <?php the_category(', '); ?>					
+					</div>
+				</header>
+				
+				<?php the_content('Read more...',true); ?>	
 			</section>
 			<?php endwhile; ?>
 			<?php else :?>
