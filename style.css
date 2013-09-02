@@ -62,7 +62,7 @@ a:hover{
 }
 
 /* Form */
-fieldset{display:block;margin-bottom:30px;}
+fieldset{display:block;margin-bottom:20px;}
 label{min-width:140px;text-align:right;display:block;float:left;border:solid 1px transparent;}
 
 label,input{height:40px;}
@@ -359,14 +359,23 @@ article#blog-post.main {
     padding-top: 80px;
 }
 .post{
-	padding:40px;margin-bottom:30px;
+	padding:30px 40px 20px;margin-bottom:30px;
 }
 .post header{
-	padding-bottom:10px;margin-bottom:20px;
+	padding-bottom:10px;margin-bottom:25px;
 	border-bottom:dotted 1px #CCC;
 }
+.post header h1{
+	color:#000;
+}
+.post header p{
+	color:#999;
+}
 .category{
-	color:#888;font-size:13px;padding-left:3px;
+	padding-left:3px;float:left;
+}
+.addthis_toolbox{
+	float:right;
 }
 
 .post .size-medium,
@@ -417,21 +426,24 @@ article#blog-post.main {
 
 /* COMMENTS ********************************************/
 .comments-section{
-	padding:15px 0;
+	padding:10px 0 0;
+	border-top:dotted 1px #CCC;
+	margin: 35px 0 0;
 }
 #commentlist {
     margin:0 0 20px;
-    border-bottom:solid 1px #DDD;
+    border-bottom:dotted 1px #CCC;
+    padding: 10px 0 0;
 }
 #commentlist li {
     padding:0 0 20px 80px;
 }
 .comment-body{
-	background:#eee;
+	background:#f7f7f7;
 	padding:10px 25px 25px;
 	position: relative;
 	font-size:16px;
-	box-shadow:0 2px 6px rgba(0,0,0,.4);
+	border:solid 1px #EEE;
 }
 .comment-body:before{
 	content:'';
@@ -440,12 +452,12 @@ article#blog-post.main {
 	position:absolute;top:10px;left:-10px;
 	border-top: solid 11px transparent;
 	border-bottom: solid 11px transparent;
-	border-right: solid 11px #eee;
+	border-right: solid 11px #f7f7f7;
 	
 }
 .comment-body .avatar{
-	position: absolute; top:0;left:-80px;
-	border:solid 2px #FFF;
+	position: absolute; top:-1px;left:-80px;
+	border:solid 1px #EEE;
 }
 .comment-body .fn{
 	font-weight: 700;
@@ -490,7 +502,35 @@ fieldset.error input,fieldset.error textarea{border-color:#A00;}
 #clearFields{line-height:50px;margin:0 15px;font-size: 12px;}
 
 /* Sidebar **********************/
+.widget-container.widget_search{padding-right:1px}
+.searchform {position:relative;}
 .searchform label{display:none}
-
+.searchform #s{width:98%;padding:0 1%}
+.searchform #searchsubmit{height: 42px;
+   	border:none;cursor:pointer;background:transparent;
+    position: absolute;
+    right: -2px;
+    text-indent: -9999px;
+    top: 0;
+    width: 45px;z-index:14;
+}
+.searchform:before,.searchform:after{
+	position:absolute;top:50%;
+	display: block;content:'';
+	width:10px;height:10px;
+}
+.searchform:after{
+	right:15px;margin:-6px 0 0;
+	border:solid 2px #666;
+	border-radius:10px;
+	background:#FFF;
+}
+.searchform:before{
+	right:9px;margin:-4px 0 0;
+	border-bottom:solid 4px #666;
+	transform: rotate(45deg);
+}
 .widget-container{display:block;padding:20px 0;border-top: 1px dotted #CCC;}
 .widget-container:first-child{border-top: none;}
+
+

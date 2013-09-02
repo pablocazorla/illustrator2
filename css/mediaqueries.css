@@ -6,33 +6,38 @@
 }
 @media only screen and (max-width:1485px){ /* 5 */
 	.wrap{width:1210px}
+	
+	article#blog-post.main {
+	    padding-top: 60px;
+	}
 }
 @media only screen and (max-width:1240px){ /* 4 */
 	.wrap{width:965px}
+	
+	
+	article#blog-post.main {
+	    padding-top: 40px;
+	}
 }
 @media only screen and (max-width:995px){ /* 3 */
 	.wrap{width:720px}
+	
+	.post h1 {font-size: 40px;}
 	
 	/* Blog list ******************************************************************/
 	.column.left,.column.right{
 		float:none;width:100%;
 	}
-	.column.right{
-		position:fixed;
-		right:10px;
-	}
-	.column.right .box{
-		margin:15px;
-	}
+	
 	
 	
 	
 }
 @media only screen and (max-width:750px){ /* 2 */
-	.wrap{width:475px}
+	.wrap{width:400px}
 }
-@media only screen and (max-width:505px){ /* 1 */
-	.wrap{width:230px}
+@media only screen and (max-width:475px){ /* 1 */
+	.wrap{width:300px}
 }
 
 

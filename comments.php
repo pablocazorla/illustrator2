@@ -12,7 +12,7 @@ if('comments.php' == basename($_SERVER['SCRIPT_FILENAME'])){
 }
 ?>
 <a id="comments" name="comments" class="anchor"></a>
-<div id="comments-content">
+<div id="comments-content" class="comments-section">
 	<h2><?php comments_number('No comments yet', '1 comment', '% comments');?></h2>
 	<?php if($comments){ //INICIA COMENTARIOS?>
 	<ul id="commentlist">

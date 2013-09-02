@@ -7,7 +7,7 @@
 			<?php if (have_posts()) :?>
 			<?php while (have_posts()) : the_post(); ?>
 			<section class="post box" id="post-<?php the_ID();?>">
-				<header>
+				<header class="clearfix">
 					<h2>
 						<a href="<?php the_permalink(); ?>">					
 							<?php the_title(); ?>
