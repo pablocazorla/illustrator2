@@ -38,14 +38,8 @@ header.main{
 	transition: opacity .2s ease;
 }
 
-#menu-launcher, #menu-launcher .plus-icon{
-	-webkit-transition: all .2s ease;
-	-moz-transition: all .2s ease;
-	transition: all .2s ease;
-}
-
-menu.main{
-	-webkit-transition: opacity .2s ease;
-	-moz-transition: opacity .2s ease;
-	transition: opacity .2s ease;
+#side-act{
+	-webkit-transition: right .3s ease;
+	-moz-transition: right .3s ease;
+	transition: right .3s ease;
 }

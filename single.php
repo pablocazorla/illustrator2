@@ -30,8 +30,8 @@
 			</section>
 			<?php endwhile; endif; ?>
 		</div>			
-		<aside class="column right">			
-			<section class="box">
+		<aside class="column right" id="column-right">			
+			<section class="box" id="sidebar">
 				<?php get_sidebar(); ?>				
 			</section>
 		</aside>

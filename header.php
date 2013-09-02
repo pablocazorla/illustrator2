@@ -46,14 +46,16 @@
 <body>
 	<header class="main">
 		<div class="wrap clearfix">
-			<a href="index.html" class="logo"><span>p'</span>caz</a>
-			<a id="menu-launcher" href="">
-				<span class="plus-icon">
-					<span class="v"></span><span class="h"></span>
-				</span>
-			</a>
-			<menu class="main">
-				<?php  wp_nav_menu();?>
-			</menu>
+			<a href="index.html" class="logo"><span>p'</span>caz</a>			
+			<div id="side-act">
+				<div id="side-act-content">
+					<menu class="main">
+						<?php  wp_nav_menu();?>
+					</menu>
+				</div>				
+			</div>			
 		</div>
+		<a id="menu-launcher" href="">
+			<span></span><span></span><span></span>
+		</a>
 	</header>

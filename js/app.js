@@ -18,7 +18,13 @@ var cazu = {
 				//this.portfolioGrid().portfolioItemAjax();
 				break;
 			case 'slide':
-				//this.slideGrid().slideItemAjax();
+				//this.slideGrid().slideItemAjax();searchInput
+				break;
+			case 'blog':
+				this.searchInput();
+				break;
+			case 'blog-post':
+				this.searchInput();
 				break;
 			default:
 				//
@@ -39,6 +45,7 @@ var cazu = {
 			
 			$menuLauncher = $('#menu-launcher'),
 			menuOpen = false,
+			menuOpening = false,
 			setMenu = function(overMenuLauncher){
 				if(overMenuLauncher && !menuOpen){
 					$header.addClass('opened-menu');
@@ -51,7 +58,19 @@ var cazu = {
 					setTimeout(function(){
 						menuOpen = false;
 					},500);									
-				}								
+				}						
+			},
+			sideAct = false,
+			setSideAct = function(){
+				var w = self.$window.width();
+				if(w <= 995 && !sideAct){
+					$('#sidebar').appendTo('#side-act-content');
+					sideAct = true;
+				}
+				if(w > 995 && sideAct){
+					$('#sidebar').appendTo('#column-right');
+					sideAct = false;
+				}
 			};
 		this.$window.scroll(function(){
 			current = self.$window.scrollTop();
@@ -65,15 +84,17 @@ var cazu = {
 				setMenu();
 			}
 			prev = current;
+		}).resize(function(){
+			setSideAct();
 		});
 		
 		$menuLauncher.click(function(ev){
 			ev.preventDefault();
 			setMenu(true);
 		});
-		this.$body.mouseup(function(){
-			setMenu(false);
-		});
+		
+		
+		setSideAct();
 		//Set color links
 		$('menu.main a').each(function(index){
 			$(this).addClass('it-menu'+index);
@@ -219,6 +240,10 @@ var cazu = {
 	},
 	slideItemAjax : function(){
 		return this;
+	},
+	searchInput : function(){
+		$('#s').attr('placeholder','Search');
+   
 	}
 }
 $('document').ready(function(){cazu.init()});

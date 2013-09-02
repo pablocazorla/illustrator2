@@ -24,11 +24,45 @@
 	
 	.post h1 {font-size: 40px;}
 	
-	/* Blog list ******************************************************************/
-	.column.left,.column.right{
-		float:none;width:100%;
+	.column.left {
+	    width: 100%;float:none;
+	}
+	.column.right {display:none}
+	
+	#side-act{
+		right:-270px;
+		position:fixed;top:60px;bottom:-4px;width:220px;
+		background:#444;padding:0 20px 4px;
+		box-shadow: inset 2px 0 4px rgba(0,0,0,.9), -1px 1px 1px #FFF;overflow: auto;
 	}
 	
+	.opened-menu #side-act{right:0}
+	
+	#side-act-content{padding-bottom:20px}
+	
+	#side-act-content #sidebar{display:block}
+	
+	#menu-launcher{display: block}
+	
+	menu.main {border-bottom: 1px solid #222}
+	menu.main,menu.main li{float:none}
+	
+	menu.main li{padding:0 20px;border-top:1px dotted #666}
+	menu.main li:first-child{border-top:none}
+	
+	#sidebar.box {
+	    background: none;
+	    box-shadow: none;
+	}
+	.widget-container,.widget-container:first-child {
+	    border-bottom: 1px solid #222;
+	    border-top: 1px solid #666;
+	}
+	.widget-container:last-child {
+	    border-bottom: none;	    
+	}
+	
+	.searchform #s {background: #BBB;border: none;}
 	
 	
 	

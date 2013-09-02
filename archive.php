@@ -25,8 +25,8 @@
 			<h2><?php _e('Sorry, works not found','pcazorla'); ?>!</h2>
 			<?php endif; ?>
 		</div>			
-		<aside class="column right">			
-			<section class="box">
+		<aside class="column right" id="column-right">			
+			<section class="box" id="sidebar">
 				<?php get_sidebar(); ?>				
 			</section>
 		</aside>
