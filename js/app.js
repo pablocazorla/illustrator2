@@ -14,17 +14,14 @@ var cazu = {
 		
 		//Per page
 		switch(window.pageID){
-			case 'portfolio':
-				//this.portfolioGrid().portfolioItemAjax();
-				break;
-			case 'slide':
-				//this.slideGrid().slideItemAjax();searchInput
-				break;
 			case 'blog':
 				this.searchInput();
 				break;
 			case 'blog-post':
 				this.searchInput();
+				break;
+			case 'portfolio':
+				this.portfolioGrid().portfolioItemAjax();
 				break;
 			default:
 				//
@@ -103,142 +100,62 @@ var cazu = {
 		return this;
 	},
 	portfolioGrid : function(){
-		var TEMPaddnews = function(count){
-				var news = '';				
-				for(var ei = count; ei > 0; ei--){
-					var h = (Math.round(Math.random()*300)+200);
-					news += '<figure>';
-					news += '<a href="" rel="'+ei+'" class="item-portfolio-link"><img src="http://lorempixel.com/230/'+h+'?rnd='+(Math.random()*4000)+'" width="230" height="'+h+'" alt="a"/></a>';
-					news += '<figcaption><h2>Imagine Luna</h2><div class="categories"><a href="">Fantasy</a></div></figcaption>'
-					news += '</figure>'				
-				}
-				return news;
-			}
-		//-----------------------------------------------------------------------
-		var grid = new cazuGrid('#gallery'),
-			self = this,
-			loading = false,
-			$loading = $('#loading-gallery'),
-			loadNews = function(){
-				if(!loading){
-					loading = true;
-					$loading.css({
-						'visibility':'visible',
-						'opacity':'1'
-					});
-					
-					setTimeout(function(){
-						$loading.css({
-							'visibility':'hidden',
-							'opacity':'0'
-						});
-						//Success
-						grid.add(TEMPaddnews(24));
-						loading = false;	
-					},500);
-				}
-			}
 		
-		loadNews();		
-		this.$window.scroll(function(){
-			var scrollDistance = Math.abs(self.$body.outerHeight() - (self.$window.scrollTop()+self.$window.height()));
-			if(scrollDistance < 100){
-				loadNews();
+		var grid = new cazuGrid('#gallery');
+			
+			var getn = function(n){
+				return 300 *n + 20*(n-1);
 			}
-		});
+			for(var i = 6;i>0;i--){
+				console.log(getn(i));
+			}
+			
 		return this;
 	},
 	portfolioItemAjax : function(){
 		var self = this,
-			$itemPortfolio = $('#item-portfolio'),
-			$content = $('#item-portfolio .content'),
-			open = false;
-			openingORclosing = false;
-			overContent = false,
-			
-			openItemPortfolio = function(postID){
-				if(!open && !openingORclosing){
-					open = true;
-					openingORclosing = true;
-					self.$body.addClass('show-item-portfolio');
-					$itemPortfolio.animate({'opacity':'1'},300,function(){openingORclosing = false;});
-									
-					setTimeout(function(){					
-						var htmlContent = '<img class="image-post" src="http://lorempixel.com/1000/1600?rnd='+(Math.random()*4000)+'" width="1000" height="1600"/>dsfsdf sfd sdf sd sdf<a href="sad">LINK</a>';
-						
-						//Success
-						if(open){
-							var $htmlContent = $(htmlContent);
-							
-							$content.append($htmlContent).find('img').load(function(){
-								$(this).addClass('visible');
-							});;
-							
-						}
-					},500);
-				}
+			$itemShow = $('.item-show'),
+			$itemContent = $("#item-content"),
+			originalContent = $itemContent.html(),
+			loadPost = function(pid, urlPost){
+				//Show Item				
+				$itemShow.fadeIn(400,function(){self.$body.addClass('overflow-hidden');});
+				$.ajax({
+					url : 'http://'+server+'/singleportfolio/',
+					data : {id:pid,urlpost:urlPost},
+					type : 'POST',
+					success : function(html){
+						$itemContent.html(html);
+					},
+					error : function(){
+						$itemContent.html('<h3>Error loading data</h3>');						
+					},
+					complete : function(){}				
+				});				
 			},
-			closeItemPortfolio = function(postID){
-				if(open && !openingORclosing){
-					open = false;
-					openingORclosing = true;
-					$itemPortfolio.animate({'opacity':'0'},300,function(){
-						self.$body.removeClass('show-item-portfolio');
-						$content.html('');
-						openingORclosing = false;
-					});	
-				}
-			};
-		
-		$(document).on('click', '.item-portfolio-link',function(ev){
-			ev.preventDefault();
-			var postID = $(this).attr('rel');
-			openItemPortfolio(postID);
-		});
-		
-		$('#item-portfolio').click(function(){
-			if(!overContent){			
-				closeItemPortfolio();
+			unloadPost = function(){
+				//Hide Item
+				$itemShow.fadeOut(250,function(){					
+					self.$body.removeClass('overflow-hidden');
+					$itemContent.html(originalContent);
+				});
 			}
-		});
 		
-		$content.hover(function(){overContent = true;},function(){overContent = false;});
+		$.ajaxSetup({cache:false});
 		
+		// Events		 
+	    $('.open-work').click(function(event){    	
+	    	var ev = event || window.event;
+	    	ev.preventDefault();        
+	        loadPost($(this).attr('rel'),$(this).attr('href'));        
+	        return false;
+	    });
+	    
+	    $('.close-work').click(function(){ 
+	        unloadPost();        
+	        return false;
+	    });
 		
-		return this;
-	},
-	slideGrid : function(){
-		var $gallery = $('#slideGallery').scrollLeft(0),
-			$slideGrab = $('#slideGrab'),
-			dragging = false,
-			origX,origScroll,v;
-		
-		
-		
-		
-		$slideGrab.mousedown(function(ev){
-			if(!dragging){
-				dragging = true;
-				origX = ev.pageX;
-				origScroll = $gallery.scrollLeft();
-			}
-		}).mousemove(function(ev){
-			if(dragging){
-				$gallery.scrollLeft(origScroll + origX - ev.pageX);
-			}
-		});
-		
-		this.$body.mouseup(function(){
-			if(dragging){
-				dragging = false;
-				
-			}
-		});
-		
-		
-		return this;
-	},
-	slideItemAjax : function(){
 		return this;
 	},
 	searchInput : function(){

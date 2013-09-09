@@ -13,6 +13,7 @@ body{
 	padding-top:60px;
 	background:#F5F5F6;
 }
+body.overflow-hidden{overflow:hidden}
 body, input, textarea {
 	font: 18px/1.5em 'Open Sans', Arial, Helvetica, sans-serif;5
 }
@@ -58,7 +59,7 @@ a:hover{
 .wrap{
 	margin:0 auto;
 	padding:0 15px;
-	width:965px;
+	width:940px;
 }
 
 /* Form */
@@ -154,139 +155,48 @@ footer.main{
 
 /* PAGES ********************************************************************************************************/
 /* Portfolio: gallery ******************/
-#gallery figure{ 
-	min-height:100px;
-	width:232px;
-	display: block;
-	margin:0 15px 15px 0;
-	float: left;z-index:99;
-	box-shadow:0 2px 3px rgba(0, 0, 0, .16);
-	-moz-box-shadow:0 2px 3px rgba(0, 0, 0, .16);
-	-webkit-box-shadow:0 2px 3px rgba(0, 0, 0, .16);
-	
-	/* loading */
-	background:#FFF url('http://s3-ec.buzzfed.com/static/enhanced/web05/2012/4/24/16/anigif_enhanced-buzz-10731-1335299292-14_preview.gif') center no-repeat;
-}
-#gallery figure.visible{
-	/* Already loaded */
-	background-image:none;
-}
-#gallery figure .work-link{
-	display: block;
-}
-#gallery figure .work-link:hover img{
-	opacity:.7;
-}
-#gallery figure img{
-	display: block;border:solid 1px #FFF;
-	
-	/* loading */
-	opacity:0;visibility: hidden;	
+.gallery{opacity:0}
+.gallery figure{width:300px;margin:0 20px 20px 0;float:left}
+.gallery figure .explain-work,
+.gallery figure .explain-work img{display:block}
+.gallery figure .explain-work{position:relative}
+.gallery figure .explain-work .hover{position:absolute;display: block;top:0;bottom:0;left:0;right:0;
+border:solid 10px #3F90C4;opacity:0;visibility:hidden;}
+.gallery figure .explain-work:hover .hover{
+	visibility:visible;opacity:.7;
 }
 
-#gallery figure.visible img{
-	/* Already loaded */
-	opacity:1;visibility: visible;
+.gallery figure figcaption{padding:10px 10px 30px}
+.gallery figure figcaption h2{font-size: 20px;line-height:22px}
+.gallery figure figcaption h2 a{color: #999}
+.gallery figure figcaption h2 a:hover{color: #3F90C4}
+.gallery figure figcaption .categories{font-size: 13px;line-height:13px}
+
+/* Portfolio: item ******************/
+.item-back{position:fixed;z-index: 2000;top:0;bottom:0;left:0;right:0;overflow:auto;background:rgba(255,255,255,.6)}
+.item-header{position:fixed;z-index: 2001;top:0;left:0;right: -40px;overflow-y: scroll;padding-right: 40px;}
+.item-header-content{position:relative;height:80px;}
+.item-header-content .close-work.x{display:block;width:60px;text-align: center;line-height: 50px;height: 50px;position:absolute;top:0;right:10px;
+	border-radius:0 0 10px 10px;color:#FFF;background:#333;font-size:24px;cursor:pointer;
 }
-#gallery figure figcaption{
-	padding:10px 10px 20px;
+.item{
+	margin:0 auto;
 }
-#gallery figure h2{
-	font-size: 16px;
-    line-height: 16px;
+#item-content{
+}
+#item-content .post {
+    margin-bottom: 0;padding:30px 20px 40px;
+}
+#item-content .post h1 {
+    font-size: 35px;
+    line-height: 40px;
     margin-bottom: 10px;
-    color:#666;
 }
-#gallery figure .categories{
-	font-size: 12px;
-    line-height: 12px;
-    margin-bottom: 0px;
+#item-content .post .category {
+    font-size: 14px;
+    line-height: 32px;
+    padding-left: 3px;
 }
-
-.loading{
-	text-align: center;
-	font-size:20px;font-weight: bold;
-	padding: 40px;
-	visibility:hidden;
-	opacity: 0;
-}
-
-/* Portfolio: Item ******************/
-body.show-item-portfolio{
-	overflow:hidden;
-}
-body.show-item-portfolio .main{
-	overflow-y:scroll;
-}
-body.show-item-portfolio #item-portfolio{
-	display:block;
-}
-#item-portfolio{
-	position:fixed;z-index:2000;
-	top:0;bottom:0;left:0;right:0;
-	display:none;
-	overflow-x:auto;
-	overflow-y:scroll;
-	padding:100px 60px 0;
-	background:rgba(255,255,255,.6);
-	opacity:0;
-	cursor: crosshair;
-}
-
-#item-portfolio .content{
-	position:relative;
-	min-height:600px;
-	max-width:1000px;
-	margin:0 auto 50px;
-	padding:20px;
-	
-	box-shadow:0 2px 6px rgba(0, 0, 0, .2);
-	-moz-box-shadow:0 2px 6px rgba(0, 0, 0, .2);
-	-webkit-box-shadow:0 2px 6px rgba(0, 0, 0, .2);
-	background:#FFF url('http://s3-ec.buzzfed.com/static/enhanced/web05/2012/4/24/16/anigif_enhanced-buzz-10731-1335299292-14_preview.gif') center 220px no-repeat;
-	cursor: auto;
-}
-#item-portfolio .content img{
-	display:block;
-	visibility: hidden;opacity:0;
-	width: 100% !important;height:auto !important;min-height:1000px;
-}
-#item-portfolio .content img.visible{
-	visibility: visible;opacity:1;min-height:0;
-}
-
-/* slideGallery ******************************************************************/
-#slideGallery{
-	background:#DDD;
-	min-height:400px;
-	padding:15px 0 30px;
-	position:relative;
-	overflow-x:scroll;
-	
-	cursor: move;
-	cursor: -moz-grab;
-	cursor: -webkit-grab;
-	cursor: grab;
-}
-#slideGrab{
-	background:#CCC url('http://lorempixel.com/250/400');
-	position:relative;
-	/*top:15px;left:15px;*/
-	min-height:400px;
-	width:15000px;
-}
-#slideGallery.grabbing{
-	background:#DDD;
-	min-height:400px;
-	padding:15px 0;
-	
-	cursor: move;
-	cursor: -moz-grabbing;
-	cursor: -webkit-grabbing;
-	cursor: grabbing;
-}
-
-
 /* BLOG ******************************************************************/
 article#blog-post.main {
     padding-top: 80px;

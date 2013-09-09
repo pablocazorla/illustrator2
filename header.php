@@ -44,6 +44,7 @@
 </head>
 
 <body>
+	<script>var server = '<?php echo $_SERVER[HTTP_HOST]; ?>';</script>
 	<header class="main">
 		<div class="wrap clearfix">
 			<a href="index.html" class="logo"><span>p'</span>caz</a>			
