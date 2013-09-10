@@ -18,7 +18,7 @@ var cazu = {
 				this.searchInput();
 				break;
 			case 'blog-post':
-				this.searchInput();
+				this.searchInput().validateForm();
 				break;
 			case 'portfolio':
 				this.portfolioGrid().portfolioItemAjax();
@@ -102,35 +102,38 @@ var cazu = {
 	portfolioGrid : function(){
 		
 		var grid = new cazuGrid('#gallery');
-			
-			var getn = function(n){
-				return 300 *n + 20*(n-1);
-			}
-			for(var i = 6;i>0;i--){
-				console.log(getn(i));
-			}
-			
+						
 		return this;
 	},
 	portfolioItemAjax : function(){
 		var self = this,
 			$itemShow = $('.item-show'),
-			$itemContent = $("#item-content"),
+			$itemDimmer = $('#item-dimmer'),
+			$itemContent = $("#item-content").css('min-height',self.$window.height()+'px'),
 			originalContent = $itemContent.html(),
 			loadPost = function(pid, urlPost){
-				//Show Item				
-				$itemShow.fadeIn(400,function(){self.$body.addClass('overflow-hidden');});
+				//Show Item
+				
+				$itemShow.scrollTop(0).fadeIn(400,function(){self.$body.addClass('overflow-hidden');});
 				$.ajax({
 					url : 'http://'+server+'/singleportfolio/',
 					data : {id:pid,urlpost:urlPost},
 					type : 'POST',
 					success : function(html){
-						$itemContent.html(html);
+						$itemContent.html(html);$itemShow.scrollTop(0);
+						$itemDimmer.height($itemContent.height());	
 					},
 					error : function(){
-						$itemContent.html('<h3>Error loading data</h3>');						
+						// On error, redirect to urlPost
+						window.location.href = urlPost;						
 					},
-					complete : function(){}				
+					complete : function(){
+						$itemDimmer.height($itemContent.height());
+						self.validateForm();
+						$.getScript('//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d9270a3495656e9',function(){
+							addthis.toolbox(".addthis_toolbox");
+						});
+					}				
 				});				
 			},
 			unloadPost = function(){
@@ -160,7 +163,56 @@ var cazu = {
 	},
 	searchInput : function(){
 		$('#s').attr('placeholder','Search');
-   
-	}
+   		return this;
+	},
+	validateForm : function(){
+		var $f = $('fieldset.validate'),
+			valid = true,
+			validate = function(){
+				valid = true;
+				$f.each(function(){
+					var $this = $(this),
+						$input = $this.find('input,textarea'),
+						min = parseInt($this.attr('min')) || 0,
+						val = $input.val(),
+						emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+						isEmail = false;
+					if($this.hasClass('email')){
+						isEmail = true;
+					}	
+					
+					if(val.length < min){
+						valid = false;
+						$this.addClass('error');
+						$input.focus();
+					}else{					
+						$this.removeClass('error');
+					}
+					if(isEmail){
+						if(val.search(emailRegEx) == -1){
+							valid = false;
+							$this.addClass('error');
+							$input.focus();
+						}else{
+							$this.removeClass('error');
+						}				
+					}			
+				});
+			},
+			clearFiels = function(){				
+				$f.removeClass('error').find('input,textarea').val('');
+				$f.eq(0).find('input').focus();				
+			};
+			
+		$('#submit').click(function(e){
+			validate();
+			if(!valid){e.preventDefault();} 
+		});
+		$('#clearFields').click(function(e){
+			e.preventDefault();
+			clearFiels();
+		});
+		return this;
+	},
 }
 $('document').ready(function(){cazu.init()});

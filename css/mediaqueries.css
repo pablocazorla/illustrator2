@@ -40,7 +40,7 @@
 	
 	#menu-launcher{display: block}
 	
-	menu.main {border-bottom: 1px solid #222}
+	xmenu.main {border-bottom: 1px solid #222}
 	menu.main,menu.main li{float:none}
 	
 	menu.main li{padding:0 20px;border-top:1px dotted #666}
@@ -50,6 +50,7 @@
 	    background: none;
 	    box-shadow: none;
 	}
+	.xoxo{border-top: 1px solid #222;}
 	.widget-container,.widget-container:first-child {
 	    border-bottom: 1px solid #222;
 	    border-top: 1px solid #666;
