@@ -19,7 +19,7 @@
 <a class="addthis_button_pinterest_share"></a>
 <a class="addthis_button_google_plusone_share"></a>
 <a class="addthis_button_compact"></a>
-<a class="addthis_counter addthis_bubble_style"></a>
+<a class="addthis_bubble_style"></a>
 </div>
 
 <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d9270a3495656e9"></script>
@@ -29,6 +29,20 @@
 				<?php comments_template(); ?>
 			</section>
 			<?php endwhile; endif; ?>
+			<div class="nav-post clearfix">
+				<?php
+				$portfolioid = get_cat_ID('Portfolio');
+				$portfoliochildcats  = get_categories(array('child_of' => $portfolioid));
+				foreach ($portfoliochildcats as $key => $cat) {
+				   $catids[$key] = $cat -> cat_ID;
+				}
+				$excludechildren = implode(', ',$catids);				
+				?>
+				<div class="prev"><?php previous_post_link('%link', '&lt; %title', FALSE, $portfolioid . ', ' . $excludechildren); ?></div>			
+				<div class="next"><?php next_post_link('%link', '%title &gt;', FALSE, $portfolioid . ', ' . $excludechildren); ?></div>	
+								
+			</div>
+			
 		</div>			
 		<aside class="column right" id="column-right">			
 			<section class="box" id="sidebar">

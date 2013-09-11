@@ -18,7 +18,7 @@ var cazu = {
 				this.searchInput();
 				break;
 			case 'blog-post':
-				this.searchInput().validateForm();
+				this.searchInput().validateForm().preHighlight();;
 				break;
 			case 'portfolio':
 				this.portfolioGrid().portfolioItemAjax();
@@ -128,7 +128,6 @@ var cazu = {
 						window.location.href = urlPost;						
 					},
 					complete : function(){
-						$itemDimmer.height($itemContent.height());
 						self.validateForm();
 						$.getScript('//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-4d9270a3495656e9',function(){
 							addthis.toolbox(".addthis_toolbox");
@@ -158,6 +157,10 @@ var cazu = {
 	        unloadPost();        
 	        return false;
 	    });
+		
+		$itemShow.scroll(function(){
+			$itemDimmer.height($itemContent.height());			
+		});
 		
 		return this;
 	},
@@ -214,5 +217,13 @@ var cazu = {
 		});
 		return this;
 	},
+	preHighlight : function(){
+		var $pre = $('pre').addClass('prettyprint').each(function(){
+			$(this).text($(this).html());
+		});
+		if($pre.length > 0){
+			$.getScript('//google-code-prettify.googlecode.com/svn/loader/run_prettify.js');
+		}		
+	}
 }
 $('document').ready(function(){cazu.init()});

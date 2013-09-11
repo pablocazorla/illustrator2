@@ -155,7 +155,7 @@ footer.main{
 
 /* PAGES ********************************************************************************************************/
 /* Portfolio: gallery ******************/
-.gallery{opacity:0}
+.gallery{opacity:0;margin-bottom: 10px;}
 .gallery figure{width:300px;margin:0 20px 20px 0;float:left}
 .gallery figure .explain-work,
 .gallery figure .explain-work img{display:block}
@@ -237,12 +237,80 @@ article#blog-post.main {
 	margin-bottom:0;font-size: 12px;text-align: center;color:#777;
 }
 
+/* Post Elements */
+.post table{
+	border-left:solid 1px #CCC;
+	border-bottom:solid 1px #CCC;
+	width:100%;
+	text-align:left;
+	font-size: 16px;
+	margin-bottom:32px;
+}
+.post table thead{
+	background: #E0E0E0;font-weight:700;
+}
+.post table thead,table td{
+	border-right:solid 1px #CCC;
+	border-top:solid 1px #CCC;
+}
+.post table th{
+	padding:6px 18px;
+}
+.post table td{
+	padding:12px 18px;
+}
+
+.post pre{
+	background:#FDFDFD;
+	font-family: monospace;
+	font-size: 16px;line-height:18px;
+	padding:15px !important;
+	border:solid 1px #DDD !important;
+	margin-bottom:32px;	
+	white-space: pre-wrap;white-space: -moz-pre-wrap;white-space: -pre-wrap;white-space: -o-pre-wrap;word-wrap: break-word
+}
+
+.post ul,.post ol{
+	padding-left:30px;
+	margin-bottom:30px;
+}
+.post ul{
+	list-style: disc outside none;
+}
+.post ul li ul {
+	list-style: circle outside none;margin:0;padding-top: 15px;
+}
+.post ul li ul li ul {
+	list-style: square outside none;
+}
+.post ol{
+	list-style: decimal outside none;
+}
+.post ol li ol{
+	list-style: lower-alpha outside none;margin:0;padding-top: 15px;
+}
+.post ol li ol li ol{
+	list-style: lower-roman outside none;
+}
+.post li{
+	padding-bottom:10px;
+}
 
 
+.nav-post div{
+	width:50%;float:left;
+}
+.nav-post div a{
+	display: block;padding:10px 70px 10px 5px;
+}
+.nav-post div.next {
+	text-align:right;float:right;
+}
+.nav-post div.next a{padding:10px 5px 10px 70px;}
 
 /* Blog list ******************************************************************/
 .column{
-	float:left;position:relative
+	float:left;position:relative;
 }
 .column.left{
 	width:72%;
@@ -264,6 +332,20 @@ article#blog-post.main {
 	position:absolute;
 	top:0;left:0;
 }
+
+.navPages{
+	text-align:center;padding-bottom:15px;
+}
+.navPages .page-numbers {
+	display: inline-block;line-height:40px;height:40px;min-width:20px;padding:0 10px;background:#FFF;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);margin:0 1px;
+}
+.navPages .page-numbers.current{
+	background:#999;
+	color:#FFF;
+}
+
+
 /* post blog ******************/
 .post h1{
 	font-size: 45px;
@@ -281,6 +363,7 @@ article#blog-post.main {
     margin:0 0 20px;
     border-bottom:dotted 1px #CCC;
     padding: 10px 0 0;
+    list-style: none;
 }
 #commentlist li {
     padding:0 0 20px 80px;
@@ -349,11 +432,11 @@ fieldset.error input,fieldset.error textarea{border-color:#A00;}
 #clearFields{line-height:50px;margin:0 15px;font-size: 12px;}
 
 /* Sidebar **********************/
-.widget-container.widget_search{padding-right:1px}
-.searchform {position:relative;}
-.searchform label{display:none}
-.searchform #s{width:98%;padding:0 1%}
-.searchform #searchsubmit{height: 42px;
+.widget-container.widget_search{padding-right:1px;}
+#searchform {position:relative;}
+#searchform label{display:none;}
+#searchform #s{width:98%;padding:0 1%;}
+#searchform #searchsubmit{height: 42px;
    	border:none;cursor:pointer;background:transparent;
     position: absolute;
     right: -2px;
@@ -361,17 +444,17 @@ fieldset.error input,fieldset.error textarea{border-color:#A00;}
     top: 0;
     width: 45px;z-index:14;
 }
-.searchform:before,.searchform:after{
+#searchform:before,#searchform:after{
 	position:absolute;top:50%;
 	display: block;content:'';	
 }
-.searchform:after{
+#searchform:after{
 	right:15px;margin:-6px 0 0;
 	border:solid 2px #666;
 	border-radius:10px;
 	width:10px;height:10px;
 }
-.searchform:before{
+#searchform:before{
 	right:9px;
 	border-bottom:solid 4px #666;
 	transform: rotate(45deg);

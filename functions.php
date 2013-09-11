@@ -6,7 +6,8 @@ if ( function_exists( 'add_theme_support' ) )
 add_theme_support( 'nav-menus' );
 // This theme uses wp_nav_menu() in one location.
 	register_nav_menus( array(
-		'primary' => __( 'Primary Navigation', 'pablocazorla' )
+		'primary' => 'Primary Navigation',
+		'secondary' => 'Secondary Navigation'
 ) );
 /***********************************************
 * HABILITAR POST THUMBNAILS
