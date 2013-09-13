@@ -463,4 +463,27 @@ fieldset.error input,fieldset.error textarea{border-color:#A00;}
 .widget-container{display:block;padding:20px 0;border-top: 1px dotted #CCC;}
 .widget-container:first-child{border-top: none;}
 
+/* HOME ********************************************************************************************/
+/* Home Slide */
+.cazu-accordion-slide{
+	position:relative;min-height:800px;
+}
+.cazu-accordion-slide > .slideWrap{
+	position:absolute;top:0;left:0;z-index:400;
+}
+.cazu-accordion-slide > .slideWrap > .slide{
+	overflow: hidden;
+}
+
+
+
+
+
+
+
+
+
+
+
+
 

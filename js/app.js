@@ -14,6 +14,9 @@ var cazu = {
 		
 		//Per page
 		switch(window.pageID){
+			case 'home':
+				this.homeSlide();
+				break;
 			case 'blog':
 				this.searchInput();
 				break;
@@ -97,6 +100,10 @@ var cazu = {
 			$(this).addClass('it-menu'+index);
 		});
 		
+		return this;
+	},
+	homeSlide : function(){
+		$('#home-slide').accordionSlide();
 		return this;
 	},
 	portfolioGrid : function(){
