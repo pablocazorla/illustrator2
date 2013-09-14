@@ -1,5 +1,12 @@
 <?php get_header(); ?>
-<article id="blog-post" class="main">
+<article id="blog-post" class="main" currentmenu="blog">
+	<header class="summary">
+		<div class="noise">
+			<div class="summary-content wrap">
+				<h1>Blog</h1>
+			</div>
+		</div>			
+	</header>
 	<div class="wrap clearfix">		
 		<div class="column left">			
 			<?php if (have_posts()) : while (have_posts()) : the_post(); ?>

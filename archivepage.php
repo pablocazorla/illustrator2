@@ -1,8 +1,14 @@
 <?php get_header(); ?>
 <?php $cat_name = single_cat_title('',false);?>
-<article id="blog" class="main">
-	<div class="wrap clearfix">
-		<h1><?php echo $cat_name; ?></h1>		
+<article id="blog" class="main" currentmenu="blog">
+	<header class="summary">
+		<div class="noise">
+			<div class="summary-content wrap">
+				<h1><?php echo $cat_name; ?></h1>
+			</div>
+		</div>			
+	</header>
+	<div class="wrap clearfix">	
 		<div class="column left">		
 			<?php if (have_posts()) :?>
 			<?php while (have_posts()) : the_post(); ?>

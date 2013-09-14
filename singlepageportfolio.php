@@ -1,5 +1,12 @@
 <?php get_header(); ?>
-<article id="blog-post" class="main">
+<article id="blog-post" class="main" currentmenu="portfolio">
+	<header class="summary">
+		<div class="noise">
+			<div class="summary-content wrap">
+				<h1>Portfolio</h1>
+			</div>
+		</div>			
+	</header>
 	<div class="wrap clearfix">				
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>			
 		<section class="post post-portfolio box" id="post-<?php the_ID();?>">    	

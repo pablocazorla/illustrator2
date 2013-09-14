@@ -10,7 +10,7 @@ var cazu = {
 		
 		if(!window.pageID){window.pageID = this.getPage();}
 		
-		this.headerMov();
+		this.headerMov().currentMenu();
 		
 		//Per page
 		switch(window.pageID){
@@ -102,6 +102,18 @@ var cazu = {
 		
 		return this;
 	},
+	currentMenu : function(){
+		var cMenu = $('article').eq(0).attr('currentmenu');
+		if(cMenu != undefined || cMenu != ''){
+			$('#menu-principal a').each(function(){
+				var $a = $(this);
+				if($a.text().toLowerCase().indexOf(cMenu) != -1){
+					$a.addClass('current');
+				}
+			});
+		}
+		return this;
+	},
 	homeSlide : function(){
 		$('#home-slide').accordionSlide();
 		return this;
@@ -123,7 +135,7 @@ var cazu = {
 				
 				$itemShow.scrollTop(0).fadeIn(400,function(){self.$body.addClass('overflow-hidden');});
 				$.ajax({
-					url : 'http://'+server+'/singleportfolio/',
+					url : 'http://'+server+'/xsingleportfolio/',
 					data : {id:pid,urlpost:urlPost},
 					type : 'POST',
 					success : function(html){

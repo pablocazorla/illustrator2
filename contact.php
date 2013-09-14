@@ -7,7 +7,7 @@ Template Name: Contact
 <?php get_header(); ?>
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <script type="text/javascript">pageid = 'about me';</script>
-<article id="about-me" class="main">
+<article id="contact" class="main" currentmenu="contact">
 	
 	<section class="presentation">
 		<div class="wrap clearfix">

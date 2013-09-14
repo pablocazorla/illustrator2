@@ -1,10 +1,14 @@
 <?php get_header(); ?>
 <?php $cat_name = single_cat_title('',false);?>
-<article id="portfolio" class="main">
-	<div class="wrap">
-		<section class="summary clearfix">
-			<h1><?php echo $cat_name; ?></h1>
-		</section>		
+<article id="portfolio" class="main" currentmenu="portfolio">
+	<header class="summary">
+		<div class="noise">
+			<div class="summary-content wrap">
+				<h1><?php echo $cat_name; ?></h1>
+			</div>
+		</div>			
+	</header>
+	<div class="wrap">				
 		<section class="gallery clearfix" id="gallery">
 			<?php if (have_posts()) :?>
 			<?php while (have_posts()) : the_post(); ?>	    
