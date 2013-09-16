@@ -8,7 +8,7 @@
 
 
 <?php if(is_home()){?>
-	<script src="<?php bloginfo('template_url'); ?>/js/jquery.cazu-slide.js" type="text/javascript"></script>
+	<script src="<?php bloginfo('template_url'); ?>/js/jquery.cazu-accordionslide.js" type="text/javascript"></script>
 <?php } ?>
 
 <script src="<?php bloginfo('template_url'); ?>/js/app.js" type="text/javascript"></script>

@@ -1,8 +1,13 @@
 <?php get_header(); ?>
-<?php $cat_name = single_cat_title('',false);?>
 <article id="blog" class="main">
-	<div class="wrap clearfix">
-		<h1>About <i style="font-style: italic"><?php echo $s; ?></i></h1>		
+	<header class="summary">
+		<div class="noise">
+			<div class="summary-content wrap">
+				<h1>About <i style="font-style: italic"><?php echo $s; ?></i></h1>	
+			</div>
+		</div>			
+	</header>
+	<div class="wrap clearfix">			
 		<div class="column left">		
 			<?php if (have_posts()) :?>
 			<?php while (have_posts()) : the_post(); ?>
@@ -31,11 +36,6 @@
 				
 				<p>Please, try with another keyword.</p>
 			</section>
-			
-			
-			
-			
-			
 			<?php endif; ?>
 			
 			<?php if (show_posts_nav()) : ?>

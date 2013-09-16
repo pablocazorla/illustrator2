@@ -52,9 +52,7 @@
 			
 		</div>			
 		<aside class="column right" id="column-right">			
-			<section class="box" id="sidebar">
-				<?php get_sidebar(); ?>				
-			</section>
+			<?php get_sidebar(); ?>	
 		</aside>
 	</div>
 </article>

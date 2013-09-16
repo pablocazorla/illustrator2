@@ -7,9 +7,9 @@
 	$.fn.accordionSlide = function(options){
 		//Settings
 		var setting = $.extend({
-			openWidth : 70, // %
+			openWidth : 80, // %
 			current : 0,
-			margin : 15 // px
+			margin : 0 // px
 		}, options);
 		
 		

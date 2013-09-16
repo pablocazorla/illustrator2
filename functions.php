@@ -15,7 +15,7 @@ add_theme_support( 'nav-menus' );
 if ( function_exists( 'add_theme_support' ) )
 add_theme_support( 'post-thumbnails' );
 /* For HOME */
-add_image_size( 'homepage-thumb', 900, 550,true);
+add_image_size( 'homepage-thumb', 300, 300,true);
 /***********************************************
 * OBTENIENDO LA URL COMPLETA DE LA THUMBNAIL
 ***********************************************/

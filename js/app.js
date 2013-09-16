@@ -10,12 +10,12 @@ var cazu = {
 		
 		if(!window.pageID){window.pageID = this.getPage();}
 		
-		this.headerMov().currentMenu();
+		this.headerMov().headerSlide().currentMenu();
 		
 		//Per page
 		switch(window.pageID){
 			case 'home':
-				this.homeSlide();
+				this.homeSlide().portfolioGrid().portfolioItemAjax().searchInput();
 				break;
 			case 'blog':
 				this.searchInput();
@@ -102,6 +102,61 @@ var cazu = {
 		
 		return this;
 	},
+	headerSlide : function(){
+		var $li = $('#header-banner .sl'),
+			c = 0,
+			l = $li.length,
+			slidetime = 500,
+			duration = 8000,
+			change = function(){
+				var n = c + 1;
+				if(n >= l){n = 0;}
+				$li.eq(n).css({'z-index':'11099'});
+				$li.eq(c).animate({'opacity':'0'},slidetime,function(){
+					$li.eq(n).css({'z-index':'11100'});
+					$li.eq(c).css({'z-index':'11000','opacity':'1'});
+					c = n;
+				});				
+			};
+		setInterval(change,duration);
+		return this;
+	},
+	homeSlide : function(){
+		var $li = $('#home-slide .slide'),
+		
+			l = 10,
+			c = Math.floor((Math.random()*l)),
+			$li_c = 0,			
+			slidetime = 500,
+			duration = 7000,
+			
+			change = function(){
+				var n = c + 1,
+					$li_n = $li_c + 1;
+				if(n >= l){n = 0;}
+				if($li_n > 1){$li_n = 0;}
+				
+				$li.eq($li_n).css({
+					'background-image': 'url("'+templateURL +'/img/home/'+ c +'.jpg")'
+				});
+				
+				$li.eq($li_c).animate({'opacity':'0'},slidetime,function(){
+					$li.eq($li_c).css({'opacity':'1','z-index':'63'});
+					$li.eq($li_n).css({'z-index':'64'});					
+					c = n;$li_c = $li_n;
+				});
+							
+			};
+		
+		$li.eq(0).css({
+			'z-index':'64',
+			'background-image': 'url("'+templateURL +'/img/home/'+ c +'.jpg")'
+		});
+		setInterval(change,duration);
+			
+			
+		return this;
+	},
 	currentMenu : function(){
 		var cMenu = $('article').eq(0).attr('currentmenu');
 		if(cMenu != undefined || cMenu != ''){
@@ -112,10 +167,6 @@ var cazu = {
 				}
 			});
 		}
-		return this;
-	},
-	homeSlide : function(){
-		$('#home-slide').accordionSlide();
 		return this;
 	},
 	portfolioGrid : function(){
@@ -135,7 +186,7 @@ var cazu = {
 				
 				$itemShow.scrollTop(0).fadeIn(400,function(){self.$body.addClass('overflow-hidden');});
 				$.ajax({
-					url : 'http://'+server+'/xsingleportfolio/',
+					url : 'http://'+server+'/singleportfolio/',
 					data : {id:pid,urlpost:urlPost},
 					type : 'POST',
 					success : function(html){

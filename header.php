@@ -44,10 +44,18 @@
 </head>
 
 <body>
-	<script>var server = '<?php echo $_SERVER[HTTP_HOST]; ?>';</script>
+	<script>
+		var server = '<?php echo $_SERVER[HTTP_HOST]; ?>',
+			templateURL = '<?php bloginfo('template_url'); ?>';		
+	</script>
 	<header class="main">
 		<div class="wrap clearfix">
-			<a href="index.html" class="logo"><span>p'</span>caz</a>			
+			<a href="<?php bloginfo( 'url' ); ?>" class="logo">Pablo Cazorla</a>
+			<div id="header-banner">
+				<div class="sl sl1"></div>
+				<div class="sl sl2"></div>
+				<div class="sl sl3"></div>
+			</div>		
 			<div id="side-act">
 				<div id="side-act-content">
 					<menu class="main">
